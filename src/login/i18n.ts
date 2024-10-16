@@ -4,6 +4,16 @@ import type { ThemeName } from "../kc.gen";
 /** @see: https://docs.keycloakify.dev/i18n */
 const { useI18n, ofTypeI18n } = i18nBuilder
     .withThemeName<ThemeName>()
+    .withExtraLanguages({
+        /* ... */
+    })
+    .withCustomTranslations({
+        // en: {
+        //     loginAccountTitle: "Log in to your ACME account",
+        //     myCustomMessage: "This is a custom message"
+        // }
+        // cspell: enable
+    })
     .build();
 
 type I18n = typeof ofTypeI18n;

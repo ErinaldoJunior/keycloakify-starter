@@ -10,9 +10,9 @@
 
 import { lazy, Suspense, type ReactNode } from "react";
 
-export type ThemeName = "damia-group" | "meta";
+export type ThemeName = "meta";
 
-export const themeNames: ThemeName[] = ["damia-group", "meta"];
+export const themeNames: ThemeName[] = ["meta"];
 
 export type KcEnvName = never;
 

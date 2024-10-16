@@ -3,11 +3,11 @@ import type { ClassKey } from "keycloakify/login";
 import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
-import Template from "keycloakify/login/Template";
+import Template from "./Template";
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
 );
-
+const Login = lazy(() => import("./pages/Login"));
 const doMakeUserConfirmPassword = true;
 
 export default function KcPage(props: { kcContext: KcContext }) {
@@ -15,12 +15,20 @@ export default function KcPage(props: { kcContext: KcContext }) {
 
     const { i18n } = useI18n({ kcContext });
 
-    useCustomCss(kcContext)
+    useCustomCss(kcContext);
 
     return (
         <Suspense>
             {(() => {
                 switch (kcContext.pageId) {
+                    case "login.ftl":
+                        return (
+                            <Login
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
                     default:
                         return (
                             <DefaultPage
@@ -41,14 +49,17 @@ export default function KcPage(props: { kcContext: KcContext }) {
 
 const classes = {} satisfies { [key in ClassKey]?: string };
 
-function useCustomCss (kcContext: KcContext) {
+function useCustomCss(kcContext: KcContext) {
     useMemo(() => {
         switch (kcContext.themeName) {
             case "damia-group":
-                import("./damia.css")
-                break
+                import("./assets/css/damia.css");
+                break;
+            case "meta":
+                import("./assets/css/meta.css");
+                break;
             default:
-                import("./meta.css")
+                import("./assets/css/meta.css");
         }
-    }, [])
+    }, []);
 }

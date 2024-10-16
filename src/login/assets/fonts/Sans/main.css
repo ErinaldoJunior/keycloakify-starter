@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "Sans";
+    src: url("./sans-bold.woff2") format("woff2");
+    font-weight: bold;
+    /* Black */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Sans";
+    src: url("./sanslatin-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Sans";
+    src: url("./sans-light.woff2") format("woff2");
+    font-weight: 300;
+    /* Light */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Sans";
+    src: url("./sans-regular.woff2") format("woff2");
+    font-weight: 500;
+    /* Medium */
+    font-style: normal;
+}

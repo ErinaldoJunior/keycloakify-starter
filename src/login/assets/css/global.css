@@ -1,0 +1,111 @@
+@import url(/src/login/assets/fonts/Sans/main.css);
+
+body {
+    font-family: Sans !important;
+}
+
+span {
+    display: inline-block;
+}
+
+label {
+    font-weight: 400;
+}
+
+.loginCard {
+    box-shadow: none;
+    padding: 40px;
+    border: none;
+    align-self: center;
+}
+
+.headerCompany {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.headerText * {
+    text-align: start !important;
+    place-self: start !important;
+}
+
+.loginWrapper {
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.H1 {
+    font-size: 28px !important;
+    line-height: 40px !important;
+}
+.H2 {
+    font-size: 24px !important;
+    line-height: 32px !important;
+    font-weight: bold !important;
+}
+.H3 {
+    font-size: 18px !important;
+    line-height: 24px !important;
+}
+
+.Subtitle1 {
+    font-size: 15px !important;
+    line-height: 16px !important;
+}
+
+.Body1 {
+    font-size: 15px !important;
+    line-height: 16px !important;
+}
+
+.Body2 {
+    font-size: 13px !important;
+    line-height: 16px !important;
+}
+
+.Body3 {
+    font-size: 13px !important;
+    line-height: 16px !important;
+    font-weight: lighter !important;
+}
+
+.Btn.md {
+    font-size: 15px !important;
+    line-height: 16px !important;
+}
+
+.Table-Header {
+    font-size: 13px !important;
+    line-height: 16px !important;
+}
+
+.Chip {
+    font-size: 13px !important;
+    line-height: 16px !important;
+}
+
+.Input-text {
+    font-size: 15px !important;
+    line-height: 16px !important;
+}
+
+.Input-label-text {
+    font-size: 13px !important;
+    line-height: 16px !important;
+}
+
+.Input-helper-text {
+    font-size: 13px !important;
+    line-height: 16px !important;
+}
+
+.Overline {
+    font-size: 12px !important;
+    line-height: 16px !important;
+}

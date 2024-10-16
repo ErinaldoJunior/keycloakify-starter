@@ -1,0 +1,52 @@
+@import url(./global.css);
+
+.pf-c-button.pf-m-primary {
+    color: #fff;
+    background-color: #df2828;
+}
+.pf-c-button.pf-m-primary:hover {
+    --pf-c-button--m-primary--Color: #fff;
+    --pf-c-button--m-primary--BackgroundColor: #ae0000;
+}
+.pf-c-button.pf-m-primary.pf-m-active,
+.pf-c-button.pf-m-primary:active {
+    --pf-c-button--m-primary--Color: #fff;
+    --pf-c-button--m-primary--BackgroundColor: #ae0000;
+}
+a {
+    color: #df2828;
+    text-decoration: none;
+}
+
+#kc-info {
+    margin: 0;
+}
+
+#kc-info-wrapper {
+    background-color: transparent;
+}
+
+.login-pf-page {
+    padding: 0;
+    display: flex;
+}
+.kcBodyClass {
+    width: 100%;
+}
+
+.login-pf body {
+    background: none;
+}
+
+.login-pf-page-header {
+    width: 60%;
+    background: url("/public/keycloakify-dev-resources/login/img/BG-Meta.jpg");
+    margin: 0 !important;
+    background-size: cover; /* Faz a imagem cobrir toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+}
+
+.kcLocaleMainClass {
+    display: none;
+}
