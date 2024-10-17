@@ -91,7 +91,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             case "meta":
                 setCompanyName("We Are Meta!");
                 setCompanyText("Manage tour support requests like a Rhino! 💪");
-                setCompanyLogo("/public/keycloakify-dev-resources/login/img/logo-meta_2024_2.png");
+                setCompanyLogo("/public/assets/img/logo-meta_2024_2.png");
                 break;
 
             default:

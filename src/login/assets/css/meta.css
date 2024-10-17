@@ -40,7 +40,7 @@ a {
 
 .login-pf-page-header {
     width: 60%;
-    background: url("/public/keycloakify-dev-resources/login/img/BG-Meta.jpg");
+    background: url("/public/assets/img/BG-Meta.jpg");
     margin: 0 !important;
     background-size: cover; /* Faz a imagem cobrir toda a área */
     background-position: center; /* Centraliza a imagem */
