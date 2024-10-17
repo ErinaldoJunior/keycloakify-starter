@@ -7,7 +7,6 @@ import { useSetClassName } from "keycloakify/tools/useSetClassName";
 import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
-import { Typography } from "@mui/material";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -26,7 +25,8 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         children,
         companyName,
         companyText,
-        companyLogo
+        companyLogo,
+        companyMiniLogo
     } = props;
 
     const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
@@ -58,7 +58,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     return (
         <div className={kcClsx("kcLoginClass")}>
             <div id="kc-header" className={kcClsx("kcHeaderClass")}>
-                <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}></div>
+                <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
+                    <img className="companyMiniLogo" src={companyMiniLogo} alt="mini-logo" />
+                </div>
             </div>
             <div className="loginWrapper">
                 <div className="loginCard">
@@ -100,7 +102,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         {(() => {
                             const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
                                 <div className="headerCompany">
-                                    <img width={76} height={63} src={companyLogo} alt="logo" />
+                                    <img width={90} src={companyLogo} alt="logo" />
                                     <div className="headerText">
                                         <span className="Subtitle1" id="kc-page-title">
                                             Welcome to {companyName}

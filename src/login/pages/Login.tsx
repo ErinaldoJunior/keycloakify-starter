@@ -6,53 +6,13 @@ import type { PageProps } from "keycloakify/login/pages/PageProps";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { Eye, EyeOff, CircleAlert } from "lucide-react";
 import { IconButton } from "@mui/material";
-
-const CustomTextField = styled(TextField)({
-    "& label.Mui-focused": {
-        color: "#A0AAB4"
-    },
-    "& .MuiInput-underline:after": {
-        borderBottomColor: "#B2BAC2"
-    },
-    "& .MuiOutlinedInput-root": {
-        "& fieldset": {
-            borderColor: "#E0E3E7"
-        },
-        "&:hover fieldset": {
-            borderColor: "#B2BAC2"
-        },
-        "&.Mui-focused fieldset": {
-            borderColor: "#6F7E8C"
-        }
-    }
-});
-
-const CustomPasswordTextField = styled(OutlinedInput)(({ theme }) => ({
-    "& label.Mui-focused": {
-        color: "#A0AAB4"
-    },
-    "& .MuiInput-underline:after": {
-        borderBottomColor: "#B2BAC2"
-    },
-    "& .MuiOutlinedInput-root": {
-        "& fieldset": {
-            borderColor: "#E0E3E7"
-        },
-        "&:hover fieldset": {
-            borderColor: "#B2BAC2"
-        },
-        "&.Mui-focused fieldset": {
-            borderColor: "#6F7E8C"
-        }
-    }
-}));
+import "../assets/css/global.css";
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -72,6 +32,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
     const [companyName, setCompanyName] = useState<string | undefined>(undefined);
     const [companyText, setCompanyText] = useState<string | undefined>(undefined);
     const [companyLogo, setCompanyLogo] = useState<string | undefined>(undefined);
+    const [companyMiniLogo, setCompanyMiniLogo] = useState<string | undefined>(undefined);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -92,6 +53,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 setCompanyName("We Are Meta!");
                 setCompanyText("Manage tour support requests like a Rhino! 💪");
                 setCompanyLogo("/public/assets/img/logo-meta_2024_2.png");
+                setCompanyMiniLogo("/public/assets/img/Meta-M-logo.svg");
                 break;
 
             default:
@@ -106,6 +68,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             companyName={companyName}
             companyText={companyText}
             companyLogo={companyLogo}
+            companyMiniLogo={companyMiniLogo}
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("username", "password")}
@@ -114,7 +77,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             infoNode={
                 <div id="kc-registration-container">
                     <div id="kc-registration">
-                        <span>
+                        <span className="Body2">
                             {msg("noAccount")}{" "}
                             <a tabIndex={8} href={url.registrationUrl}>
                                 {msg("doRegister")}
@@ -177,10 +140,10 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                               : msg("email")} */}
                                         Email address
                                     </label>
-                                    <CustomTextField
+                                    <TextField
                                         tabIndex={2}
                                         id="username"
-                                        className={kcClsx("kcInputClass")}
+                                        className="inputLogin"
                                         name="username"
                                         defaultValue={login.username ?? ""}
                                         type="text"
@@ -194,19 +157,26 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             )}
 
                             <div className={kcClsx("kcFormGroupClass")}>
-                                <label htmlFor="password" className={kcClsx("kcLabelClass")}>
+                                <label htmlFor="password" className="Input-label-text">
                                     {msg("password")}
                                 </label>
                                 <OutlinedInput
                                     tabIndex={3}
                                     id="password"
-                                    className={kcClsx("kcInputClass")}
+                                    className="inputLogin"
                                     name="password"
                                     autoComplete="current-password"
+                                    placeholder="Password"
                                     type={showPassword ? "text" : "password"}
                                     error={messagesPerField.existsError("username", "password")}
                                     endAdornment={
-                                        !messagesPerField.existsError("username", "password") && (
+                                        messagesPerField.existsError("username", "password") ? (
+                                            <InputAdornment position="end">
+                                                <IconButton edge="end" disabled>
+                                                    <CircleAlert color="red" width={16} />
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ) : (
                                             <InputAdornment position="end">
                                                 <IconButton
                                                     aria-label="toggle password visibility"
@@ -215,7 +185,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                                     onMouseUp={handleMouseUpPassword}
                                                     edge="end"
                                                 >
-                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                    {showPassword ? <EyeOff color="#353232" width={16} /> : <Eye color="#353232" width={16} />}
                                                 </IconButton>
                                             </InputAdornment>
                                         )
@@ -254,14 +224,14 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                                     type="checkbox"
                                                     defaultChecked={!!login.rememberMe}
                                                 />{" "}
-                                                {msg("rememberMe")}
+                                                <span className="rememberText">{msg("rememberMe")}</span>
                                             </label>
                                         </div>
                                     )}
                                 </div>
                                 <div className={kcClsx("kcFormOptionsWrapperClass")}>
                                     {realm.resetPasswordAllowed && (
-                                        <span>
+                                        <span className="Body2">
                                             <a tabIndex={6} href={url.loginResetCredentialsUrl}>
                                                 {msg("doForgotPassword")}
                                             </a>
@@ -272,15 +242,26 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
                             <div id="kc-form-buttons" className={kcClsx("kcFormGroupClass")}>
                                 <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
-                                <input
+                                {/* <input
                                     tabIndex={7}
                                     disabled={isLoginButtonDisabled}
                                     className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
                                     name="login"
                                     id="kc-login"
                                     type="submit"
-                                    value={msgStr("doLogIn")}
-                                />
+                                    value="Login"
+                                /> */}
+                                <Button
+                                    variant="contained"
+                                    tabIndex={7}
+                                    className="loginBtn"
+                                    disabled={isLoginButtonDisabled}
+                                    name="login"
+                                    id="kc-login"
+                                    type="submit"
+                                >
+                                    Login
+                                </Button>
                             </div>
                         </form>
                     )}

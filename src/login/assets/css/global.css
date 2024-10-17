@@ -12,6 +12,17 @@ label {
     font-weight: 400;
 }
 
+.companyMiniLogo {
+    position: absolute;
+    left: 25px;
+    top: 30px;
+    width: 32px;
+}
+
+.kcLoginClass {
+    display: flex;
+}
+
 .loginCard {
     box-shadow: none;
     padding: 40px;
@@ -26,9 +37,18 @@ label {
     gap: 24px;
 }
 
+.headerText {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .headerText * {
     text-align: start !important;
     place-self: start !important;
+}
+.login-pf-page-header {
+    width: 60%;
 }
 
 .loginWrapper {
@@ -108,4 +128,81 @@ label {
 .Overline {
     font-size: 12px !important;
     line-height: 16px !important;
+}
+
+.inputLogin,
+.MuiOutlinedInput-input {
+    width: 100%;
+    box-sizing: border-box !important;
+}
+
+.MuiInputBase-root,
+.MuiOutlinedInput-input {
+    font-family: Sans !important;
+    font-size: 13px !important;
+    line-height: 16px !important;
+}
+
+.MuiOutlinedInput-root fieldset {
+    border: 1px solid #a0aab4;
+}
+
+.MuiOutlinedInput-root:hover fieldset {
+    border: 1px solid #323535;
+}
+
+.MuiOutlinedInput-root.Mui-focused fieldset {
+    border: 1px solid #323535 !important;
+}
+
+.rememberText {
+    font-size: 15px !important;
+    line-height: 16px !important;
+    color: #2c3e50 !important;
+    margin-left: 10px;
+    display: block;
+}
+
+.checkbox,
+.radio {
+    margin: 0;
+}
+
+.checkbox label,
+.radio label {
+    display: flex;
+    align-items: center;
+}
+
+/* global.css */
+.checkbox input[type="checkbox"] {
+    margin-top: 0px;
+    width: 20px; /* Ajuste o tamanho conforme necessário */
+    height: 20px; /* Ajuste o tamanho conforme necessário */
+}
+
+.loginBtn {
+    width: 100%;
+    margin-top: 24px;
+    font-family: Sans !important;
+    text-transform: capitalize !important;
+    font-size: 15px !important;
+    border-radius: 6px !important;
+}
+
+@media screen and (max-width: 960px) {
+    .loginWrapper {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .login-pf-page-header {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1124px) {
+    .loginWrapper {
+        padding: 20px;
+    }
 }

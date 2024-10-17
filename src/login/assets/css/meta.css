@@ -1,21 +1,25 @@
 @import url(./global.css);
 
-.pf-c-button.pf-m-primary {
+.loginBtn {
     color: #fff;
-    background-color: #df2828;
+    background-color: #df2828 !important;
 }
-.pf-c-button.pf-m-primary:hover {
+.loginBtn:hover {
     --pf-c-button--m-primary--Color: #fff;
-    --pf-c-button--m-primary--BackgroundColor: #ae0000;
+    --pf-c-button--m-primary--BackgroundColor: #ae0000 !important;
 }
-.pf-c-button.pf-m-primary.pf-m-active,
-.pf-c-button.pf-m-primary:active {
+.loginBtn.pf-m-active,
+.loginBtn:active {
     --pf-c-button--m-primary--Color: #fff;
-    --pf-c-button--m-primary--BackgroundColor: #ae0000;
+    --pf-c-button--m-primary--BackgroundColor: #ae0000 !important;
 }
 a {
     color: #df2828;
     text-decoration: none;
+}
+
+a:hover {
+    color: #ae0000 !important;
 }
 
 #kc-info {
@@ -39,7 +43,6 @@ a {
 }
 
 .login-pf-page-header {
-    width: 60%;
     background: url("/public/assets/img/BG-Meta.jpg");
     margin: 0 !important;
     background-size: cover; /* Faz a imagem cobrir toda a área */

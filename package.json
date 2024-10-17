@@ -22,6 +22,7 @@
         "@mui/icons-material": "^6.1.4",
         "@mui/material": "^6.1.4",
         "keycloakify": "^11.2.10",
+        "lucide-react": "^0.453.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },

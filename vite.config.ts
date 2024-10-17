@@ -9,6 +9,7 @@ export default defineConfig({
         keycloakify({
             accountThemeImplementation: "none",
             themeName: ["damia-group", "meta"]
+            // themeName: "meta"
         })
     ]
 });
