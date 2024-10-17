@@ -26,7 +26,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         companyName,
         companyText,
         companyLogo,
-        companyMiniLogo
+        companyMiniLogo,
+        companyD,
+        companySofa
     } = props;
 
     const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
@@ -59,7 +61,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         <div className={kcClsx("kcLoginClass")}>
             <div id="kc-header" className={kcClsx("kcHeaderClass")}>
                 <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
-                    <img className="companyMiniLogo" src={companyMiniLogo} alt="mini-logo" />
+                    {companyMiniLogo !== "" && <img className="companyMiniLogo" src={companyMiniLogo} alt="mini-logo" />}
+                    {companyD !== "" && <img className="damiaD" src={companyD} alt="d" />}
+                    {companySofa !== "" && <img className="damiaSofa" src={companySofa} alt="sofa" />}
                 </div>
             </div>
             <div className="loginWrapper">
@@ -102,7 +106,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         {(() => {
                             const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
                                 <div className="headerCompany">
-                                    <img width={90} src={companyLogo} alt="logo" />
+                                    <img width={100} src={companyLogo} alt="logo" />
                                     <div className="headerText">
                                         <span className="Subtitle1" id="kc-page-title">
                                             Welcome to {companyName}

@@ -1,33 +1,25 @@
-@import url(/src/login/assets/fonts/Sans/main.css);
 @import url(./global.css);
 
-body {
-    font-family: Sans;
-}
-
-.card-pf {
-    box-shadow: none;
-    padding: 0 20px;
-    max-width: 500px;
-    border: none;
-    height: 100vh;
-}
-.pf-c-button.pf-m-primary {
+.loginBtn {
     color: #fff;
-    background-color: rgb(0, 86, 125);
+    background-color: rgb(0, 86, 125) !important;
 }
-.pf-c-button.pf-m-primary:hover {
+.loginBtn:hover {
     --pf-c-button--m-primary--Color: #fff;
-    --pf-c-button--m-primary--BackgroundColor: rgb(0, 70, 103);
+    --pf-c-button--m-primary--BackgroundColor: rgb(0, 70, 103) !important;
 }
-.pf-c-button.pf-m-primary.pf-m-active,
-.pf-c-button.pf-m-primary:active {
+.loginBtn.pf-m-active,
+.loginBtn:active {
     --pf-c-button--m-primary--Color: #fff;
-    --pf-c-button--m-primary--BackgroundColor: rgb(0, 70, 103);
+    --pf-c-button--m-primary--BackgroundColor: rgb(0, 70, 103) !important;
 }
 a {
     color: rgb(0, 86, 125);
     text-decoration: none;
+}
+
+a:hover {
+    color: rgb(0, 70, 103) !important;
 }
 
 #kc-info {
@@ -38,24 +30,38 @@ a {
     background-color: transparent;
 }
 
-.login-pf-page-header {
-    width: 70%;
-    background: transparent;
-    margin: 0;
-    padding: 0;
-}
-
 .login-pf-page {
     padding: 0;
     display: flex;
 }
-
-.kcFormCardClass {
-    width: 30%;
+.kcBodyClass {
+    width: 100%;
 }
 
-/* .login-pf body {
-    background: url("../img/keycloak-bg.png") no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-} */
+.login-pf body {
+    background: none;
+}
+
+.login-pf-page-header {
+    background-color: #00587c;
+    margin: 0 !important;
+    position: relative;
+}
+
+.kcLocaleMainClass {
+    display: none;
+}
+
+.damiaD {
+    max-width: 280px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.damiaSofa {
+    max-width: 380px;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}

@@ -33,6 +33,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
     const [companyText, setCompanyText] = useState<string | undefined>(undefined);
     const [companyLogo, setCompanyLogo] = useState<string | undefined>(undefined);
     const [companyMiniLogo, setCompanyMiniLogo] = useState<string | undefined>(undefined);
+    const [companyD, setCompanyD] = useState<string | undefined>(undefined);
+    const [companySofa, setCompanySofa] = useState<string | undefined>(undefined);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -54,6 +56,17 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 setCompanyText("Manage tour support requests like a Rhino! 💪");
                 setCompanyLogo("/public/assets/img/logo-meta_2024_2.png");
                 setCompanyMiniLogo("/public/assets/img/Meta-M-logo.svg");
+                setCompanyD("");
+                setCompanySofa("");
+                break;
+
+            case "damia-group":
+                setCompanyName("Damia Group!");
+                setCompanyText("Manage your support requests in a breeze! 😎");
+                setCompanyLogo("/public/assets/img/logo-damia.png");
+                setCompanyMiniLogo("");
+                setCompanyD("/public/assets/img/damia-D.png");
+                setCompanySofa("/public/assets/img/sofa.png");
                 break;
 
             default:
@@ -69,6 +82,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             companyText={companyText}
             companyLogo={companyLogo}
             companyMiniLogo={companyMiniLogo}
+            companyD={companyD}
+            companySofa={companySofa}
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("username", "password")}
