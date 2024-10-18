@@ -13,6 +13,11 @@
     --pf-c-button--m-primary--Color: #fff;
     --pf-c-button--m-primary--BackgroundColor: #ae0000 !important;
 }
+
+.MuiButtonBase-root.Mui-disabled.loginBtn {
+    background-color: #ed989f !important;
+    color: #fff !important;
+}
 a {
     color: #df2828;
     text-decoration: none;
@@ -43,7 +48,7 @@ a:hover {
 }
 
 .login-pf-page-header {
-    background: url("/public/assets/img/BG-Meta.jpg");
+    background: url("/public/img/BG-Meta.jpg");
     margin: 0 !important;
     background-size: cover; /* Faz a imagem cobrir toda a área */
     background-position: center; /* Centraliza a imagem */

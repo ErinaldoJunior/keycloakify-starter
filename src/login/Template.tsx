@@ -13,7 +13,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         displayInfo = false,
         displayMessage = true,
         displayRequiredFields = false,
-        headerNode,
+
         socialProvidersNode = null,
         infoNode = null,
         documentTitle,
@@ -23,8 +23,8 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         doUseDefaultCss,
         classes,
         children,
-        companyName,
-        companyText,
+        headerTitle,
+        headerText,
         companyLogo,
         companyMiniLogo,
         companyD,
@@ -33,9 +33,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
 
-    const { msg, msgStr, currentLanguage, enabledLanguages } = i18n;
+    const { msg, msgStr } = i18n;
 
-    const { realm, auth, url, message, isAppInitiatedAction } = kcContext;
+    const { auth, url, message, isAppInitiatedAction } = kcContext;
 
     useEffect(() => {
         document.title = documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName);
@@ -109,9 +109,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                     <img width={100} src={companyLogo} alt="logo" />
                                     <div className="headerText">
                                         <span className="Subtitle1" id="kc-page-title">
-                                            Welcome to {companyName}
+                                            {headerTitle}
                                         </span>
-                                        <span className="Body2">{companyText}</span>
+                                        <span className="Body2">{headerText}</span>
                                     </div>
                                 </div>
                             ) : (
@@ -132,10 +132,10 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                         <div className={clsx(kcClsx("kcLabelWrapperClass"), "subtitle")}>
                                             <span className="subtitle">
                                                 <span className="required">*</span>
-                                                {msg("requiredFields")}
+                                                <p>{msg("requiredFields")}</p>
                                             </span>
                                         </div>
-                                        <div className="col-md-10">{node}</div>
+                                        <div>{node}</div>
                                     </div>
                                 );
                             }

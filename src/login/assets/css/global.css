@@ -4,6 +4,40 @@ body {
     font-family: Sans !important;
 }
 
+.H1 {
+    font-size: clamp(1.75rem, 1.5vw + 1rem, 3rem) !important;
+    line-height: clamp(2.5rem, 2vw + 1rem, 4rem) !important;
+}
+
+.H2 {
+    font-size: clamp(1.5rem, 1vw + 1rem, 2.5rem) !important;
+    line-height: clamp(2rem, 1.5vw + 1rem, 3rem) !important;
+    font-weight: bold !important;
+}
+
+.H3 {
+    font-size: clamp(1.25rem, 0.75vw + 1rem, 2rem) !important;
+    line-height: clamp(1.75rem, 1.5vw + 1rem, 2.5rem) !important;
+}
+
+.Subtitle1,
+.Body1,
+.Btn.md,
+.Input-text {
+    font-size: clamp(1rem, 0.75vw + 0.5rem, 1.5rem) !important;
+    line-height: clamp(1.5rem, 1vw + 0.5rem, 2rem) !important;
+}
+
+.Body2,
+.Body3,
+.Table-Header,
+.Chip,
+.Input-label-text,
+.Input-helper-text,
+.Overline {
+    font-size: clamp(0.875rem, 0.5vw + 0.5rem, 1.25rem) !important;
+    line-height: clamp(1.25rem, 0.75vw + 0.5rem, 1.75rem) !important;
+}
 span {
     display: inline-block;
 }
@@ -31,6 +65,7 @@ label {
 }
 
 .headerCompany {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,9 +73,10 @@ label {
 }
 
 .headerText {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 
 .headerText * {
@@ -53,82 +89,12 @@ label {
 
 .loginWrapper {
     width: 40%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px;
+    padding: 40px;
     background-color: #f3f3f3;
-}
-
-.H1 {
-    font-size: 28px !important;
-    line-height: 40px !important;
-}
-.H2 {
-    font-size: 24px !important;
-    line-height: 32px !important;
-    font-weight: bold !important;
-}
-.H3 {
-    font-size: 18px !important;
-    line-height: 24px !important;
-}
-
-.Subtitle1 {
-    font-size: 15px !important;
-    line-height: 16px !important;
-}
-
-.Body1 {
-    font-size: 15px !important;
-    line-height: 16px !important;
-}
-
-.Body2 {
-    font-size: 13px !important;
-    line-height: 16px !important;
-}
-
-.Body3 {
-    font-size: 13px !important;
-    line-height: 16px !important;
-    font-weight: lighter !important;
-}
-
-.Btn.md {
-    font-size: 15px !important;
-    line-height: 16px !important;
-}
-
-.Table-Header {
-    font-size: 13px !important;
-    line-height: 16px !important;
-}
-
-.Chip {
-    font-size: 13px !important;
-    line-height: 16px !important;
-}
-
-.Input-text {
-    font-size: 15px !important;
-    line-height: 16px !important;
-}
-
-.Input-label-text {
-    font-size: 13px !important;
-    line-height: 16px !important;
-}
-
-.Input-helper-text {
-    font-size: 13px !important;
-    line-height: 16px !important;
-}
-
-.Overline {
-    font-size: 12px !important;
-    line-height: 16px !important;
 }
 
 .inputLogin,
@@ -140,8 +106,8 @@ label {
 .MuiInputBase-root,
 .MuiOutlinedInput-input {
     font-family: Sans !important;
-    font-size: 13px !important;
-    line-height: 16px !important;
+    font-size: clamp(0.8125rem, 0.5vw + 0.5rem, 1rem) !important;
+    line-height: clamp(1rem, 0.75vw + 0.5rem, 1.25rem) !important;
 }
 
 .MuiOutlinedInput-root fieldset {
@@ -157,13 +123,21 @@ label {
 }
 
 .rememberText {
-    font-size: 15px !important;
+    font-size: clamp(1rem, 0.5vw + 0.5rem, 1.5rem) !important;
     line-height: 16px !important;
     color: #2c3e50 !important;
     margin-left: 10px;
     display: block;
 }
 
+.loginBtn {
+    font-size: clamp(1rem, 0.5vw + 0.5rem, 1.5rem) !important;
+    width: 100%;
+    margin-top: 24px;
+    font-family: Sans !important;
+    text-transform: capitalize !important;
+    border-radius: 6px !important;
+}
 .checkbox,
 .radio {
     margin: 0;
@@ -175,20 +149,10 @@ label {
     align-items: center;
 }
 
-/* global.css */
 .checkbox input[type="checkbox"] {
     margin-top: 0px;
-    width: 20px; /* Ajuste o tamanho conforme necessário */
-    height: 20px; /* Ajuste o tamanho conforme necessário */
-}
-
-.loginBtn {
-    width: 100%;
-    margin-top: 24px;
-    font-family: Sans !important;
-    text-transform: capitalize !important;
-    font-size: 15px !important;
-    border-radius: 6px !important;
+    width: 20px;
+    height: 20px;
 }
 
 @media screen and (max-width: 960px) {
@@ -206,4 +170,42 @@ label {
     .loginWrapper {
         padding: 20px;
     }
+}
+
+.subtitle {
+    margin: 0;
+}
+
+.kcContentWrapperClass div {
+    padding: 0;
+    width: 100%;
+}
+.kcFormOptionsClass {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.backToLogin {
+    display: inline-block;
+    font-size: clamp(0.9375rem, 0.5vw + 0.5rem, 1.25rem);
+}
+
+.backToLoginWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+
+.subtitle {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    justify-content: end;
+}
+
+.resetLinkText {
+    text-transform: inherit !important;
 }

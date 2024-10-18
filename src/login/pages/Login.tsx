@@ -1,18 +1,22 @@
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect } from "react";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
-import { assert } from "keycloakify/tools/assert";
 import { clsx } from "keycloakify/tools/clsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
-import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
+import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { Button, TextField } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { Button } from "@mui/material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Eye, EyeOff, CircleAlert } from "lucide-react";
 import { IconButton } from "@mui/material";
 import "../assets/css/global.css";
+
+import logoMeta from "../assets/img/logo-meta_2024_2.png";
+import logoDamia from "../assets/img/logo-damia.png";
+import damiaD from "../assets/img/damia-D.png";
+import damiaSofa from "../assets/img/sofa.png";
+import miniLogoMeta from "../assets/img/Meta-M-logo.svg";
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -24,13 +28,13 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
     const { social, realm, url, usernameHidden, login, auth, registrationDisabled, messagesPerField } = kcContext;
 
-    const { msg, msgStr } = i18n;
+    const { msg } = i18n;
 
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 
     // header config
-    const [companyName, setCompanyName] = useState<string | undefined>(undefined);
-    const [companyText, setCompanyText] = useState<string | undefined>(undefined);
+    const [headerTitle, setHeaderTitle] = useState<string | undefined>(undefined);
+    const [headerText, setHeaderText] = useState<string | undefined>(undefined);
     const [companyLogo, setCompanyLogo] = useState<string | undefined>(undefined);
     const [companyMiniLogo, setCompanyMiniLogo] = useState<string | undefined>(undefined);
     const [companyD, setCompanyD] = useState<string | undefined>(undefined);
@@ -52,21 +56,21 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
         const t = kcContext.themeName;
         switch (t) {
             case "meta":
-                setCompanyName("We Are Meta!");
-                setCompanyText("Manage tour support requests like a Rhino! 💪");
-                setCompanyLogo("/public/assets/img/logo-meta_2024_2.png");
-                setCompanyMiniLogo("/public/assets/img/Meta-M-logo.svg");
+                setHeaderTitle("Welcome to We Are Meta!");
+                setHeaderText("Manage your support requests like a Rhino! 💪");
+                setCompanyLogo(logoMeta);
+                setCompanyMiniLogo(miniLogoMeta);
                 setCompanyD("");
                 setCompanySofa("");
                 break;
 
             case "damia-group":
-                setCompanyName("Damia Group!");
-                setCompanyText("Manage your support requests in a breeze! 😎");
-                setCompanyLogo("/public/assets/img/logo-damia.png");
+                setHeaderTitle("Welcome to Damia Group!");
+                setHeaderText("Manage your support requests in a breeze! 😎");
+                setCompanyLogo(logoDamia);
                 setCompanyMiniLogo("");
-                setCompanyD("/public/assets/img/damia-D.png");
-                setCompanySofa("/public/assets/img/sofa.png");
+                setCompanyD(damiaD);
+                setCompanySofa(damiaSofa);
                 break;
 
             default:
@@ -78,8 +82,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            companyName={companyName}
-            companyText={companyText}
+            headerTitle={headerTitle}
+            headerText={headerText}
             companyLogo={companyLogo}
             companyMiniLogo={companyMiniLogo}
             companyD={companyD}
@@ -155,7 +159,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                               : msg("email")} */}
                                         Email address
                                     </label>
-                                    <TextField
+                                    <OutlinedInput
                                         tabIndex={2}
                                         id="username"
                                         className="inputLogin"
@@ -167,6 +171,15 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         autoComplete="username"
                                         aria-invalid={messagesPerField.existsError("username", "password")}
                                         error={messagesPerField.existsError("username", "password")}
+                                        endAdornment={
+                                            messagesPerField.existsError("username", "password") ? (
+                                                <InputAdornment position="end">
+                                                    <IconButton edge="end" disabled>
+                                                        <CircleAlert color="red" width={16} />
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ) : null
+                                        }
                                     />
                                 </div>
                             )}
@@ -283,36 +296,5 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 </div>
             </div>
         </Template>
-    );
-}
-
-function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: string; children: JSX.Element }) {
-    const { kcClsx, i18n, passwordInputId, children } = props;
-
-    const { msgStr } = i18n;
-
-    const [isPasswordRevealed, toggleIsPasswordRevealed] = useReducer((isPasswordRevealed: boolean) => !isPasswordRevealed, false);
-
-    useEffect(() => {
-        const passwordInputElement = document.getElementById(passwordInputId);
-
-        assert(passwordInputElement instanceof HTMLInputElement);
-
-        passwordInputElement.type = isPasswordRevealed ? "text" : "password";
-    }, [isPasswordRevealed]);
-
-    return (
-        <div className={kcClsx("kcInputGroup")}>
-            {children}
-            {/* <button
-                type="button"
-                className={kcClsx("kcFormPasswordVisibilityButtonClass")}
-                aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
-                aria-controls={passwordInputId}
-                onClick={toggleIsPasswordRevealed}
-            >
-                <i className={kcClsx(isPasswordRevealed ? "kcFormPasswordVisibilityIconHide" : "kcFormPasswordVisibilityIconShow")} aria-hidden />
-            </button> */}
-        </div>
     );
 }
