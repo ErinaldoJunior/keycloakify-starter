@@ -13,7 +13,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         displayInfo = false,
         displayMessage = true,
         displayRequiredFields = false,
-
         socialProvidersNode = null,
         infoNode = null,
         documentTitle,
@@ -106,7 +105,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         {(() => {
                             const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
                                 <div className="headerCompany">
-                                    <img width={100} src={companyLogo} alt="logo" />
+                                    <img width={140} src={companyLogo} alt="logo" />
                                     <div className="headerText">
                                         <span className="Subtitle1" id="kc-page-title">
                                             {headerTitle}
