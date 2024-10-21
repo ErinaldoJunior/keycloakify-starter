@@ -1,4 +1,4 @@
-import { useEffect, useReducer, Fragment, useState } from "react";
+import { useEffect, Fragment, useState } from "react";
 import { assert } from "keycloakify/tools/assert";
 import type { KcClsx } from "keycloakify/login/lib/kcClsx";
 import {

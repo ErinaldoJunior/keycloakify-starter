@@ -25,7 +25,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
 
     const { url, realm, auth, messagesPerField } = kcContext;
 
-    const { msg, msgStr } = i18n;
+    const { msg } = i18n;
 
     const [headerTitle, setHeaderTitle] = useState<string | undefined>(undefined);
     const [headerText, setHeaderText] = useState<string | undefined>(undefined);

@@ -15,7 +15,7 @@ import damiaD from "../assets/img/damia-D.png";
 import damiaSofa from "../assets/img/sofa.png";
 import miniLogoMeta from "../assets/img/Meta-M-logo.svg";
 import Button from "@mui/material/Button";
-import { ChevronLeft, ChevronLeftIcon } from "lucide-react";
+import { ChevronLeftIcon } from "lucide-react";
 
 type RegisterProps = PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n> & {
     UserProfileFormFields: LazyOrNot<(props: UserProfileFormFieldsProps) => JSX.Element>;
@@ -33,7 +33,7 @@ export default function Register(props: RegisterProps) {
     const { messageHeader, url, messagesPerField, recaptchaRequired, recaptchaVisible, recaptchaSiteKey, recaptchaAction, termsAcceptanceRequired } =
         kcContext;
 
-    const { msg, msgStr, advancedMsg } = i18n;
+    const { msg, advancedMsg } = i18n;
 
     const [isFormSubmittable, setIsFormSubmittable] = useState(false);
     const [areTermsAccepted, setAreTermsAccepted] = useState(false);
