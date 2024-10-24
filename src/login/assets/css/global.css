@@ -23,7 +23,8 @@ body {
 .Subtitle1,
 .Body1,
 .Btn.md,
-.Input-text {
+.Input-text,
+.instruction {
     font-size: clamp(1rem, 0.55vw + 0.3rem, 1.5rem) !important;
     line-height: clamp(1.5rem, 1vw + 0.5rem, 2rem) !important;
 }

@@ -105,7 +105,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         {(() => {
                             const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
                                 <div className="headerCompany">
-                                    <img width={140} src={companyLogo} alt="logo" />
+                                    {companyLogo !== "" && <img width={140} src={companyLogo} alt="logo" />}
                                     <div className="headerText">
                                         <span className="Subtitle1" id="kc-page-title">
                                             {headerTitle}
