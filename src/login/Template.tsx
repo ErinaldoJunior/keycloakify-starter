@@ -22,8 +22,8 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         doUseDefaultCss,
         classes,
         children,
-        headerTitle,
         headerText,
+        headerTitle,
         companyLogo,
         companyMiniLogo,
         companyD,
@@ -107,9 +107,16 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                 <div className="headerCompany">
                                     {companyLogo !== "" && <img width={140} src={companyLogo} alt="logo" />}
                                     <div className="headerText">
-                                        <span className="Subtitle1" id="kc-page-title">
-                                            {headerTitle}
-                                        </span>
+                                        {headerTitle !== "" ? (
+                                            <span className="Subtitle1" id="kc-page-title">
+                                                {headerTitle}
+                                            </span>
+                                        ) : (
+                                            <span className="Subtitle1" id="kc-page-title">
+                                                Welcome to {kcContext.realm.displayName}!
+                                            </span>
+                                        )}
+
                                         <span className="Body2">{headerText}</span>
                                     </div>
                                 </div>
@@ -168,7 +175,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                 </div>
                             )}
                             {children}
-                            {auth !== undefined && auth.showTryAnotherWayLink && (
+                            {/* {auth !== undefined && auth.showTryAnotherWayLink && (
                                 <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
                                     <div className={kcClsx("kcFormGroupClass")}>
                                         <input type="hidden" name="tryAnotherWay" value="on" />
@@ -184,7 +191,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                         </a>
                                     </div>
                                 </form>
-                            )}
+                            )} */}
                             {socialProvidersNode}
                             {displayInfo && (
                                 <div id="kc-info" className={kcClsx("kcSignUpClass")}>

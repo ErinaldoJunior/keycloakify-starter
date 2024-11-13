@@ -39,8 +39,10 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
     const [companyMiniLogo, setCompanyMiniLogo] = useState<string | undefined>(undefined);
     const [companyD, setCompanyD] = useState<string | undefined>(undefined);
     const [companySofa, setCompanySofa] = useState<string | undefined>(undefined);
-
+    const [enableRegister, setEnableRegister] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+
+    console.log("kcContext", kcContext);
 
     const handleClickShowPassword = () => setShowPassword(show => !show);
 
@@ -53,11 +55,35 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
     };
 
     useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectUri = urlParams.get("redirect_uri");
+        if (redirectUri) {
+            localStorage.setItem("redirect_uri", redirectUri);
+        }
+    }, []);
+
+    useEffect(() => {
         const t = kcContext.themeName;
         switch (t) {
             case "meta":
-                setHeaderTitle("Welcome to We Are Meta!");
-                setHeaderText("Manage your support requests like a Rhino! 💪");
+                setHeaderTitle("");
+
+                if (window.location.href.includes("support") || localStorage.getItem("redirect_uri")?.includes("support")) {
+                    setHeaderText("Manage your support requests like a Rhino! 💪");
+                } else if (window.location.href.includes("timesheet") || localStorage.getItem("redirect_uri")?.includes("timesheet")) {
+                    setHeaderText("Easily log your hours and keep track of your productivity. ⏰");
+                    setEnableRegister(true);
+                } else if (window.location.href.includes("portal") || localStorage.getItem("redirect_uri")?.includes("portal")) {
+                    setHeaderText("Easily submit your mileage and expenses. 🚗💼");
+                    setEnableRegister(true);
+                } else if (window.location.href.includes("finance") || localStorage.getItem("redirect_uri")?.includes("finance")) {
+                    setHeaderText("Manage recruitment processes and stay on top of every step. 📋👥");
+                } else if (window.location.href.includes("customer") || localStorage.getItem("redirect_uri")?.includes("customer")) {
+                    setHeaderText("Track your candidates in real-time and stay updated on your active job openings. 👥📊");
+                } else {
+                    setHeaderText("Access your account and explore all our features. 🚀");
+                }
+
                 setCompanyLogo(logoMeta);
                 setCompanyMiniLogo(miniLogoMeta);
                 setCompanyD("");
@@ -65,8 +91,22 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 break;
 
             case "damia-group":
-                setHeaderTitle("Welcome to Damia Group!");
-                setHeaderText("Manage your support requests in a breeze! 😎");
+                setHeaderTitle("");
+                if (window.location.href.includes("support") || localStorage.getItem("redirect_uri")?.includes("support")) {
+                    setHeaderText("Manage your support requests in a breeze! 😎");
+                } else if (window.location.href.includes("timesheet") || localStorage.getItem("redirect_uri")?.includes("timesheet")) {
+                    setHeaderText("Easily log your hours and keep track of your productivity. ⏰");
+                    setEnableRegister(true);
+                } else if (window.location.href.includes("portal") || localStorage.getItem("redirect_uri")?.includes("portal")) {
+                    setHeaderText("Easily submit your mileage and expenses. 🚗💼");
+                    setEnableRegister(true);
+                } else if (window.location.href.includes("finance") || localStorage.getItem("redirect_uri")?.includes("finance")) {
+                    setHeaderText("Manage recruitment processes and stay on top of every step. 📋👥");
+                } else if (window.location.href.includes("customer") || localStorage.getItem("redirect_uri")?.includes("customer")) {
+                    setHeaderText("Track your candidates in real-time and stay updated on your active job openings. 👥📊");
+                } else {
+                    setHeaderText("Access your account and explore all our features. 🚀");
+                }
                 setCompanyLogo(logoDamia);
                 setCompanyMiniLogo("");
                 setCompanyD(damiaD);
@@ -94,16 +134,18 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             headerNode={msg("loginAccountTitle")}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={
-                <div id="kc-registration-container">
-                    <div id="kc-registration">
-                        <span className="Body2">
-                            {msg("noAccount")}{" "}
-                            <a tabIndex={8} href={url.registrationUrl}>
-                                {msg("doRegister")}
-                            </a>
-                        </span>
+                enableRegister && (
+                    <div id="kc-registration-container">
+                        <div id="kc-registration">
+                            <span className="Body2">
+                                {msg("noAccount")}{" "}
+                                <a tabIndex={8} href={url.registrationUrl}>
+                                    {msg("doRegister")}
+                                </a>
+                            </span>
+                        </div>
                     </div>
-                </div>
+                )
             }
             socialProvidersNode={
                 <>

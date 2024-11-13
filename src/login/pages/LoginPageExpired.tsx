@@ -1,20 +1,19 @@
 import type { PageProps } from "keycloakify/login/pages/PageProps";
-import { useEffect, useState } from "react";
-import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import damiaD from "../assets/img/damia-D.png";
 import damiaSofa from "../assets/img/sofa.png";
 import miniLogoMeta from "../assets/img/Meta-M-logo.svg";
-import { ChevronLeftIcon } from "lucide-react";
+import { useState, useEffect } from "react";
 
-export default function Error(props: PageProps<Extract<KcContext, { pageId: "error.ftl" }>, I18n>) {
+export default function LoginPageExpired(props: PageProps<Extract<KcContext, { pageId: "login-page-expired.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
-    const { message, client, skipLink } = kcContext;
+    const { url } = kcContext;
 
     const { msg } = i18n;
 
+    // header config
     const [headerTitle, setHeaderTitle] = useState<string | undefined>(undefined);
     const [headerText, setHeaderText] = useState<string | undefined>(undefined);
     const [companyLogo, setCompanyLogo] = useState<string | undefined>(undefined);
@@ -60,20 +59,36 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
             i18n={i18n}
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
-            displayMessage={false}
-            headerNode={msg("errorTitle")}
+            headerNode={msg("pageExpiredTitle")}
         >
-            <div id="kc-error-message">
-                <p className="instruction" dangerouslySetInnerHTML={{ __html: kcSanitize(message.summary) }} />
-                {!skipLink && client !== undefined && client.baseUrl !== undefined && (
-                    <p>
-                        <a id="backToApplication" href={client.baseUrl} className="backToLoginWrapper">
-                            {/* {msg("backToApplication")} */}
-                            <ChevronLeftIcon size={18} /> <span className="backToLogin">Back to Application</span>
-                        </a>
-                    </p>
-                )}
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
+                <p id="instruction1" className="instruction">
+                    {msg("pageExpiredMsg1")}
+                    <a style={{ marginLeft: "4px" }} id="loginRestartLink" href={url.loginRestartFlowUrl}>
+                        click here.
+                    </a>
+                </p>
             </div>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
+                <p id="instruction1" className="instruction">
+                    {msg("pageExpiredMsg2")}
+                    <a style={{ marginLeft: "4px" }} className="Body1" id="loginContinueLink" href={url.loginAction}>
+                        click here.
+                    </a>
+                </p>
+            </div>
+            {/* <p id="instruction1" className="instruction">
+                {msg("pageExpiredMsg1")}
+                <a id="loginRestartLink" href={url.loginRestartFlowUrl}>
+                    {msg("doClickHere")}
+                </a>{" "}
+                .<br />
+                {msg("pageExpiredMsg2")}{" "}
+                <a id="loginContinueLink" href={url.loginAction}>
+                    {msg("doClickHere")}
+                </a>{" "}
+                .
+            </p> */}
         </Template>
     );
 }

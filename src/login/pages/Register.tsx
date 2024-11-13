@@ -49,8 +49,22 @@ export default function Register(props: RegisterProps) {
         const t = kcContext.themeName;
         switch (t) {
             case "meta":
-                setHeaderTitle("Welcome to We Are Meta!");
-                setHeaderText("Register to get the best support experience! 🦏");
+                setHeaderTitle("");
+
+                if (window.location.href.includes("support") || localStorage.getItem("redirect_uri")?.includes("support")) {
+                    setHeaderText("Register to get the best support experience.");
+                } else if (window.location.href.includes("timesheet") || localStorage.getItem("redirect_uri")?.includes("timesheet")) {
+                    setHeaderText("Register to submit your timesheet.");
+                } else if (window.location.href.includes("portal") || localStorage.getItem("redirect_uri")?.includes("portal")) {
+                    setHeaderText("Register to submit your mileage and expenses.");
+                } else if (window.location.href.includes("finance") || localStorage.getItem("redirect_uri")?.includes("finance")) {
+                    setHeaderText("Register to get the best recruitment experience.");
+                } else if (window.location.href.includes("customer") || localStorage.getItem("redirect_uri")?.includes("customer")) {
+                    setHeaderText("Register to track and manage your candidates.");
+                } else {
+                    setHeaderText("Sign up and be more productive.");
+                }
+
                 setCompanyLogo(logoMeta);
                 setCompanyMiniLogo(miniLogoMeta);
                 setCompanyD("");
@@ -58,8 +72,22 @@ export default function Register(props: RegisterProps) {
                 break;
 
             case "damia-group":
-                setHeaderTitle("Welcome to Damia Group!");
-                setHeaderText("Register to get the best support experience! 🛋️");
+                setHeaderTitle("");
+
+                if (window.location.href.includes("support") || localStorage.getItem("redirect_uri")?.includes("support")) {
+                    setHeaderText("Register to get the best support experience.");
+                } else if (window.location.href.includes("timesheet") || localStorage.getItem("redirect_uri")?.includes("timesheet")) {
+                    setHeaderText("Register to submit your timesheet.");
+                } else if (window.location.href.includes("portal") || localStorage.getItem("redirect_uri")?.includes("portal")) {
+                    setHeaderText("Register to submit your mileage and expenses.");
+                } else if (window.location.href.includes("finance") || localStorage.getItem("redirect_uri")?.includes("finance")) {
+                    setHeaderText("Register to get the best recruitment experience.");
+                } else if (window.location.href.includes("customer") || localStorage.getItem("redirect_uri")?.includes("customer")) {
+                    setHeaderText("Register to track and manage your candidates.");
+                } else {
+                    setHeaderText("Sign up and be more productive.");
+                }
+
                 setCompanyLogo(logoDamia);
                 setCompanyMiniLogo("");
                 setCompanyD(damiaD);

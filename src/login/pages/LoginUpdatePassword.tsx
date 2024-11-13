@@ -49,7 +49,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
         const t = kcContext.themeName;
         switch (t) {
             case "meta":
-                setHeaderTitle("");
+                setHeaderTitle("Update your password 🔒");
                 setHeaderText("");
                 setCompanyLogo("");
                 setCompanyMiniLogo(miniLogoMeta);
@@ -58,7 +58,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                 break;
 
             case "damia-group":
-                setHeaderTitle("");
+                setHeaderTitle("Update your password 🔒");
                 setHeaderText("");
                 setCompanyLogo("");
                 setCompanyMiniLogo("");
