@@ -1,0 +1,218 @@
+@import url(/src/login/assets/fonts/Sans/main.css);
+
+body {
+    font-family: Sans !important;
+}
+
+.H1 {
+    font-size: clamp(1.75rem, 1.5vw + 1rem, 3rem) !important;
+    line-height: clamp(2.5rem, 2vw + 1rem, 4rem) !important;
+}
+
+.H2 {
+    font-size: clamp(1.5rem, 1vw + 1rem, 2.5rem) !important;
+    line-height: clamp(2rem, 1.5vw + 1rem, 3rem) !important;
+    font-weight: bold !important;
+}
+
+.H3 {
+    font-size: clamp(1.25rem, 0.75vw + 1rem, 2rem) !important;
+    line-height: clamp(1.75rem, 1.5vw + 1rem, 2.5rem) !important;
+}
+
+.Subtitle1,
+.Body1,
+.Btn.md,
+.Input-text,
+.instruction {
+    font-size: clamp(1rem, 0.55vw + 0.3rem, 1.5rem) !important;
+    line-height: clamp(1.5rem, 1vw + 0.5rem, 2rem) !important;
+}
+
+.Body2,
+.Body3,
+.Table-Header,
+.Chip,
+.Input-label-text,
+.Input-helper-text,
+.Overline {
+    font-size: clamp(0.875rem, 0.3vw + 0.3rem, 1rem) !important;
+    line-height: clamp(1.25rem, 0.75vw + 0.5rem, 1.75rem) !important;
+}
+
+.kcFormSocialAccountSectionClass h2 {
+    font-size: clamp(0.875rem, 0.3vw + 0.3rem, 1rem) !important;
+    line-height: clamp(1.25rem, 0.75vw + 0.5rem, 1.75rem) !important;
+    font-weight: 600 !important;
+}
+span {
+    display: inline-block;
+}
+
+label {
+    font-weight: 400;
+}
+
+.companyMiniLogo {
+    position: absolute;
+    left: 25px;
+    top: 30px;
+    width: 32px;
+}
+
+.kcLoginClass {
+    display: flex;
+}
+
+.loginCard {
+    box-shadow: none;
+    padding: 40px;
+    border: none;
+    align-self: center;
+}
+
+.headerCompany {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.headerText {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.headerText * {
+    text-align: start !important;
+    place-self: start !important;
+}
+.login-pf-page-header {
+    width: 60%;
+}
+
+.loginWrapper {
+    width: 40%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #f3f3f3;
+}
+
+.inputLogin,
+.MuiOutlinedInput-input {
+    width: 100%;
+    box-sizing: border-box !important;
+}
+
+.MuiInputBase-root,
+.MuiOutlinedInput-input {
+    font-family: Sans !important;
+    font-size: clamp(0.8125rem, 0.5vw + 0.5rem, 1rem) !important;
+    line-height: clamp(1rem, 0.75vw + 0.5rem, 1.25rem) !important;
+}
+
+.MuiOutlinedInput-root fieldset {
+    border: 1px solid #a0aab4;
+}
+
+.MuiOutlinedInput-root:hover fieldset {
+    border: 1px solid #323535;
+}
+
+.MuiOutlinedInput-root.Mui-focused fieldset {
+    border: 1px solid #323535 !important;
+}
+
+.rememberText {
+    font-size: clamp(0.875rem, 0.3vw + 0.3rem, 1.5rem) !important;
+    line-height: 16px !important;
+    color: #2c3e50 !important;
+    margin-left: 10px;
+    display: block;
+}
+
+.loginBtn {
+    font-size: clamp(1rem, 0.5vw + 0.5rem, 1.5rem) !important;
+    width: 100%;
+    margin-top: 24px;
+    font-family: Sans !important;
+    text-transform: capitalize !important;
+    border-radius: 6px !important;
+}
+.checkbox,
+.radio {
+    margin: 0;
+}
+
+.checkbox label,
+.radio label {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox input[type="checkbox"] {
+    margin-top: 0px;
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (max-width: 960px) {
+    .loginWrapper {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .login-pf-page-header {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1124px) {
+    .loginWrapper {
+        padding: 20px;
+    }
+}
+
+.subtitle {
+    margin: 0;
+}
+
+.kcContentWrapperClass div {
+    padding: 0;
+    width: 100%;
+}
+.kcFormOptionsClass {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.backToLogin {
+    display: inline-block;
+    font-size: clamp(0.9375rem, 0.5vw + 0.5rem, 1.25rem);
+}
+
+.backToLoginWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+
+.subtitle {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    justify-content: end;
+}
+
+.resetLinkText {
+    text-transform: inherit !important;
+}

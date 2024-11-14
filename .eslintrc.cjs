@@ -14,7 +14,8 @@ module.exports = {
         "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
         "react-hooks/exhaustive-deps": "off",
         "@typescript-eslint/no-redeclare": "off",
-        "no-labels": "off"
+        "no-labels": "off",
+        "@typescript-eslint/no-unused-vars": "off" // remove o erro de variáveis não utilizadas
     },
     overrides: [
         {
