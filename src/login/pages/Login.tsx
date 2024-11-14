@@ -68,8 +68,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             case "meta":
                 setHeaderTitle("");
 
-                if (window.location.href.includes("support") || localStorage.getItem("redirect_uri")?.includes("support")) {
-                    setHeaderText("Manage your support requests like a Rhino! 💪");
+                if (window.location.href.includes("tickets") || localStorage.getItem("redirect_uri")?.includes("tickets")) {
+                    setHeaderText("Get the help you need with ease. 🚀");
                 } else if (window.location.href.includes("timesheet") || localStorage.getItem("redirect_uri")?.includes("timesheet")) {
                     setHeaderText("Easily log your hours and keep track of your productivity. ⏰");
                     setEnableRegister(true);
@@ -92,8 +92,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
             case "damia-group":
                 setHeaderTitle("");
-                if (window.location.href.includes("support") || localStorage.getItem("redirect_uri")?.includes("support")) {
-                    setHeaderText("Manage your support requests in a breeze! 😎");
+                if (window.location.href.includes("tickets") || localStorage.getItem("redirect_uri")?.includes("tickets")) {
+                    setHeaderText("Get the help you need with ease. 🚀");
                 } else if (window.location.href.includes("timesheet") || localStorage.getItem("redirect_uri")?.includes("timesheet")) {
                     setHeaderText("Easily log your hours and keep track of your productivity. ⏰");
                     setEnableRegister(true);
